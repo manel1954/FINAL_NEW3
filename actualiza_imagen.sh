@@ -7,11 +7,11 @@ sed -i "2c $fecha_formateada" /home/pi/version-fecha-actualizacion
 
                         # sudo killall qt_actualizacion 
                         
-                        cd /home/pi/FINAL_NEW2                                             
+                        cd /home/pi/FINAL_NEW3                                             
                         git pull --force                      
                         sudo rm -R /home/pi/A108
                         mkdir /home/pi/A108                                                
-                        cp -R /home/pi/FINAL_NEW2/* /home/pi/A108
+                        cp -R /home/pi/FINAL_NEW3/* /home/pi/A108
                         sleep 6                                             
                         sudo chmod 777 -R /home/pi/A108
                         
