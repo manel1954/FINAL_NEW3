@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=0.9.4
+Type=Application
+Name=Abrir_Paneles
+Exec=sh -c 'cd /home/pi/A108/qt;sleep 5;./qt_menu_superior'
+Exec=sh -c 'cd /home/pi/A108/qt;sleep 5;./qt_menu_inferior'
+OnlyShowIn=XFCE;
+RunHook=0
+StartupNotify=false
+Terminal=false
+Hidden=false
+

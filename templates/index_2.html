@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos del Puerto Serie</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background: rgb(6, 26, 43);
+        }
+
+        .h1{
+            color: rgb(219, 217, 215);
+            border: 2px solid rgb(219, 217, 215);
+            font-size: 20px; 
+        }
+
+        .fecha-hora {
+            color: rgb(219, 217, 215);
+            border: 2px solid rgb(219, 217, 215);
+            font-size: 35px;
+        }
+
+        .tx-rx {
+            color: rgb(219, 217, 215);
+            border: 2px solid rgb(219, 217, 215);
+            font-size: 35px;
+        }
+
+        .frecuencia-rx {
+            color: orange;
+            border: 2px solid rgb(219, 217, 215);
+            font-size: 18px;
+        }
+
+        .frecuencia-tx {
+            color: orange;
+            border: 2px solid rgb(219, 217, 215);
+            font-size: 18px;
+        }
+
+        .ip {
+            color: rgb(219, 217, 215);
+            border: 2px solid rgb(219, 217, 215);
+            font-size: 18px;
+        }
+
+        .estado {
+            color: rgb(219, 217, 215);
+            border: 2px solid rgb(219, 217, 215);
+            font-size: 18px;
+        }
+
+        .ber {
+            color: rgb(219, 217, 215);
+            border: 2px solid rgb(219, 217, 215);
+            font-size: 18px;
+        }
+
+        .lh {
+            color: rgb(219, 217, 215);
+            border: 2px solid rgb(219, 217, 215);
+            font-size: 18px;
+        }
+
+        .rssi {
+            color: rgb(219, 217, 215);
+            border: 2px solid rgb(219, 217, 215);
+            font-size: 18px;
+        }
+
+        .temp {
+            color: rgb(219, 217, 215);
+            border: 2px solid rgb(219, 217, 215);
+            font-size: 18px;
+        }
+
+        .tg {
+            color: rgb(219, 217, 215);
+            border: 2px solid rgb(219, 217, 215);
+            font-size: 18px;
+        }
+    </style>
+
+    <script>
+        async function fetchData() {
+            try {
+                const response = await fetch('/data');
+                const data = await response.json();
+    
+                // Actualizar todos los campos
+                const campos = [
+                    "Fecha y Hora", "TX/RX", "Frecuencia RX", "Frecuencia TX",
+                    "IP", "Estado", "Ber", "LH", "RSSI", "Temp", "TG"
+                ];
+    
+                campos.forEach(campo => {
+                    // Sanitizar el ID del campo para que sea válido en el HTML
+                    const campoId = campo.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+                    const elemento = document.getElementById(campoId);
+                    if (elemento) {
+                        // Verificar si el campo TG contiene "MMDVM IDLE"
+                        if (campo === "TX/RX" && data["TG"] === "MMDVM IDLE") {
+                            elemento.textContent = `${campo}: . . . . . . . . . .`;
+                        } else {
+                            elemento.textContent = `${campo}: ${data[campo] || "Cargando..."}`;
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+    
+        // Actualizar los datos cada 2 segundos
+        setInterval(fetchData, 2000);
+    
+        // Cargar datos al inicio
+        document.addEventListener('DOMContentLoaded', fetchData);
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="col-lg-4 col-lg-offset-4 text-center">
+        <h3 style="color:white">MMDVMHost Virtual Nextion_2</h3>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 text-center">
+            <div class="dato fecha-hora" id="fecha-y-hora">Fecha y Hora: Cargando...</div>
+        </div>
+    </div><!-- row -->
+
+    <br>
+
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 text-center">
+            <div class="dato tx-rx" id="tx-rx">TX/RX: Cargando...</div>
+        </div>
+    </div><!-- row -->
+
+    <br>
+
+    <div class="row">
+        <div class="col-lg-3 col-lg-offset-3 text-center frecuencia-rx" id="frecuencia-rx">Frecuencia RX: Cargando...</div>
+        <div class="col-lg-3 text-center frecuencia-tx" id="frecuencia-tx">Frecuencia TX: Cargando...</div><br>
+    </div><!-- row -->
+
+    <br>
+
+    <div class="row">
+        <div class="col-lg-3 col-lg-offset-3 text-center rssi" id="rssi">RSSI: Cargando...</div>
+        <div class="col-lg-3 text-center estado" id="estado">Estado: Cargando...</div><br>
+    </div><!-- row -->
+
+    <br>
+
+    <div class="row">
+        <div class="col-lg-3 col-lg-offset-3 text-center ber" id="ber">Ber: Cargando...</div>
+        <div class="col-lg-3 text-center lh" id="lh">LH: Cargando...</div><br>
+    </div><!-- row -->
+
+    <br>
+
+    <div class="row">
+        <div class="col-lg-3 col-lg-offset-3 text-center tg" id="tg">TG: Cargando...</div>
+        <div class="col-lg-3 text-center temp" id="temp">Temp: Cargando...</div><br>
+    </div><!-- row -->
+
+    <br>
+
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 text-center ip" id="ip">IP: Cargando...</div>
+    </div><!-- row -->
+
+</div><!-- container -->
+
+</div>
+</body>
+</html>

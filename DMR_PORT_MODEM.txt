@@ -1,0 +1,10 @@
+UARTPort x x
+/dev/ttyACM0    port    /dev/ttyACM0
+/dev/ttyACM1    port    /dev/ttyACM1
+/dev/ttyACM2    port    /dev/ttyACM2
+/dev/ttyAMA0    port    /dev/ttyAMA0
+/dev/ttyUSB0    port    /dev/ttyUSB0
+/dev/ttyUSB1    port    /dev/ttyUSB1
+/dev/ttyUSB2    port    /dev/ttyUSB2
+/dev/rfcomm0    port    /dev/rfcomm0
+/dev/rfcomm1    port    /dev/rfcomm1

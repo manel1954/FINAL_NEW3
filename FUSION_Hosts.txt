@@ -1,0 +1,29 @@
+REFLECTORES  YSF x x x       
+ES-ADER                     32027             ASSOCIACIO ADER             aderdigital.ddns.net  42000   000
+ES-ALBACETE                 21402             ALBACETE                    80.211.78.17    42375   000
+ES-EA-Distrito-3            21403             EA-Distrito-3               212.227.87.198  42003   000
+ES-EA-Distrito-5            21405             EA-Distrito-5               212.227.87.198  42005   000
+ES-EA-Distrito-6            21406             EA-Distrito-6               212.227.87.198  42006   000
+ES-YSF214                   21410             YSF-214                     212.227.87.198  42014   000
+ES-LEON                     21424             C4FM-LEON                   148.135.96.174  42009   000
+ES-RONDA                    21429             SERRANIA-RONDA              213.186.33.5    42010   000
+ES-EA-Distrito-1            21441             EA-Distrito-1               212.227.87.198  42000   000
+ES-EA-Distrito-2            21442             EA-Distrito-2               212.227.87.198  42002   000
+ES-BADAJOZ                  21444             BADAJOZ                     51.75.140.10    42000   000
+ES-Valladolid               21447             TG-21447                    80.211.104.214  42007   000
+ES-EA-Distrito-8            21448             EA-Distrito-8               212.227.87.198  42008   000
+ES-EA-Distrito-9            21449             EA-Distrito-9               212.227.87.198  42009   000
+XX-EA-ZARAGOZA              21450             DSTAR/YSF/DMR               88.7.87.164     42000   000
+ES-CHATGPT                  21499             IA-CHATGPT                  80.211.78.17    42009   000
+ES-EA-Distrito-7            22047             EA-Distrito-7               212.227.87.198  42007   000
+ES-EA-Distrito-4            62980             YSF Distrito 4              212.237.0.67    42000   000
+ES-REM-SPAIN                15642             ES-REM-SPAIN.               80.211.163.139  42000   000
+ES-ALCOYANOS                58511             ALCOYANOS                   82.223.204.29   42395   000
+XX-EUROPELINK               00007             Europelink                  161.97.73.43    42000   000
+ES-ANDALUCIA                21887             ANDALUCIA                   57.131.25.19     42000  000
+ES-MALLORCA                 53278             MALLORCA                    82.223.54.35    42000   000
+ES-WiresX                   21187             Wires-X-Spain               82.223.204.29   42001   000
+ES-EA-C4FM-Spain            22401             (YCS224)                    212.237.3.141   42000   000
+ES-ALMERIA                  96124             YSF ALMERIA                 80.211.1.143    42000   000
+ES-YSF214                   21410             YSF-214                     212.227.87.198  42014   000
+ES-XIXONA                   21410             ES-XIXONA                   217.154.97.237  42399   000
