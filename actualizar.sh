@@ -91,4 +91,3 @@ gpioset gpiochip0 20=0 &
 sleep 0.2
 gpioset gpiochip0 20=1 &
 sleep 0.5
-
