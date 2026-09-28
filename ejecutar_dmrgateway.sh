@@ -12,12 +12,12 @@ sed -i "87c $puerto" /home/pi/status.ini
 
 cd /home/pi/DMRGateway
 
-xterm -geometry 87x15+1287+643 -bg black -fg white -fa 'serift' -fs 9x -T DMRGateway -e sudo ./DMRGateway DMRGateway.ini &
+xterm -geometry 80x13+1340+543 -bg black -fg white -fa 'serift' -fs 9x -T DMRGateway -e sudo ./DMRGateway DMRGateway.ini &
 
 sleep 2
 
 cd /home/pi/MMDVMHost
-xterm -geometry 87x7+1287+905 -bg black -fg white -fa 'serift' -fs 9x -T MMDVMDMRGATEWAY -e sudo ./MMDVMDMRGATEWAY MMDVMDMRGateway.ini 
+xterm -geometry 80x13+1340+782 -bg black -fg white -fa 'serift' -fs 9x -T MMDVMDMRGATEWAY -e sudo ./MMDVMDMRGATEWAY MMDVMDMRGateway.ini 
 
 
 
