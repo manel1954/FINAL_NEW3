@@ -190,20 +190,6 @@ class FusionEditor(tk.Tk):
         # Contenedor centrado para toda la fila de botones superiores.
         top_buttons = ttk.Frame(top)
         top_buttons.pack(anchor="center")
-        tk.Button(
-            top_buttons,
-            text="Abrir fichero MMDVMFUSION.ini",
-            command=lambda: self.open_in_geany(DEFAULT_INI),
-            bg="#f2b632",
-            fg="#111111",
-            activebackground="#f2b632",
-            activeforeground="#111111",
-            relief="flat",
-            bd=0,
-            font=("DejaVu Sans", 8, "bold"),
-            cursor="hand2",
-        ).pack(side="left", padx=3, ipady=4)
-
         self.menu_principal_button = tk.Button(
             top_buttons,
             text="MENÚ PRINCIPAL",
@@ -233,6 +219,21 @@ class FusionEditor(tk.Tk):
             cursor="hand2",
         )
         self.menu_display_button.pack(side="left", padx=3, ipady=4)
+
+        self.editar_ysfgateway_button = tk.Button(
+            top_buttons,
+            text="MENÚ YSFGATEWAY",
+            command=self.editar_ysfgateway,
+            bg="#337ab7",
+            fg="white",
+            activebackground="#286090",
+            activeforeground="white",
+            relief="flat",
+            bd=0,
+            font=("DejaVu Sans", 8, "bold"),
+            cursor="hand2",
+        )
+        self.editar_ysfgateway_button.pack(side="left", padx=3, ipady=4)
 
         ttk.Button(top_buttons, text="Recargar", command=self.reload, style="Top.TButton").pack(side="left", padx=3)
         ttk.Button(top_buttons, text="Guardar", command=self.save, style="Top.TButton").pack(side="left", padx=3)
@@ -360,21 +361,21 @@ class FusionEditor(tk.Tk):
         )
         self.reboot_button.pack(side="left", padx=(10, 4), ipady=4)
 
-        self.editar_ysfgateway_button = tk.Button(
+        self.abrir_mmdvmfusion_button = tk.Button(
             image_update_row,
-            text="Editar YSFGateway",
-            command=self.editar_ysfgateway,
+            text="Abrir fichero MMDVMFUSION.ini",
+            command=lambda: self.open_in_geany(DEFAULT_INI),
             relief="flat",
             bd=0,
-            width=18,
+            width=24,
             font=("DejaVu Sans", 9, "bold"),
             cursor="hand2",
-            bg="#337ab7",
-            fg="white",
-            activebackground="#286090",
-            activeforeground="white",
+            bg="#f2b632",
+            fg="#111111",
+            activebackground="#f2b632",
+            activeforeground="#111111",
         )
-        self.editar_ysfgateway_button.pack(side="left", padx=(10, 4), ipady=4)
+        self.abrir_mmdvmfusion_button.pack(side="left", padx=(10, 4), ipady=4)
 
         self.actualizar_reflectores_button = tk.Button(
             image_update_row,
