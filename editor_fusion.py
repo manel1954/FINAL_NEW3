@@ -421,6 +421,28 @@ class FusionEditor(tk.Tk):
 
         self.protocol("WM_DELETE_WINDOW", self.on_close)
 
+    def _marcar_menu_activo(self, path=None):
+        """Marca con un borde rojo brillante el boton del menu actualmente cargado."""
+        path = (path or self.path_var.get() or "").strip()
+
+        botones = (
+            (getattr(self, "menu_principal_button", None), DEFAULT_INI),
+            (getattr(self, "menu_display_button", None), DISPLAY_INI),
+            (getattr(self, "editar_ysfgateway_button", None), "/home/pi/YSFClients/YSFGateway/YSFGateway.ini"),
+        )
+
+        for boton, ruta in botones:
+            if boton is None:
+                continue
+            activo = os.path.abspath(path) == os.path.abspath(ruta)
+            boton.configure(
+                highlightthickness=4 if activo else 1,
+                highlightbackground="#ff2b2b" if activo else "#555555",
+                highlightcolor="#ff2b2b" if activo else "#555555",
+            )
+
+        self.update_idletasks()
+
     def _set_menu_buttons_loading(self, loading):
         """Bloquea los tres botones de menú mientras se está cargando un INI."""
         state = tk.DISABLED if loading else tk.NORMAL
@@ -556,6 +578,7 @@ class FusionEditor(tk.Tk):
         self.status_var.set(
             f"Cargado: {DISPLAY_INI}  ·  {len(self.doc.items)} parámetros activos"
         )
+        self._marcar_menu_activo(DISPLAY_INI)
         self._cerrar_popup_cargando(popup)
         self._set_menu_buttons_loading(False)
 
@@ -1003,6 +1026,7 @@ class FusionEditor(tk.Tk):
         self.changed = False
         self._populate()
         self.status_var.set(f"Cargado: {path}  ·  {len(self.doc.items)} parámetros activos")
+        self._marcar_menu_activo(path)
 
     def open_in_geany(self, path=None):
         path = (path or self.path_var.get()).strip()
