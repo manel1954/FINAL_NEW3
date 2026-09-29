@@ -422,7 +422,7 @@ class FusionEditor(tk.Tk):
         self.protocol("WM_DELETE_WINDOW", self.on_close)
 
     def _marcar_menu_activo(self, path=None):
-        """Marca el menu activo con un halo rojo fosforescente animado."""
+        """Marca el menu activo con un borde rojo brillante fijo, sin animacion."""
         path = (path or self.path_var.get() or "").strip()
 
         botones = (
@@ -431,52 +431,21 @@ class FusionEditor(tk.Tk):
             (getattr(self, "editar_ysfgateway_button", None), "/home/pi/YSFClients/YSFGateway/YSFGateway.ini"),
         )
 
-        self._boton_menu_activo = None
+        # Todos conservan exactamente el mismo grosor de borde para que Tkinter
+        # no recalcule la geometria al cambiar de menu. Solo cambia el color.
         for boton, ruta in botones:
             if boton is None:
                 continue
             activo = os.path.abspath(path) == os.path.abspath(ruta)
             boton.configure(
-                highlightthickness=7 if activo else 1,
-                highlightbackground="#ff1a1a" if activo else "#555555",
-                highlightcolor="#ff1a1a" if activo else "#555555",
-                bd=2 if activo else 0,
+                highlightthickness=6,
+                highlightbackground="#ff2020" if activo else "#101010",
+                highlightcolor="#ff2020" if activo else "#101010",
+                bd=0,
                 relief="flat",
             )
-            if activo:
-                self._boton_menu_activo = boton
-
-        # Inicia una pulsacion suave del halo. El cambio de grosor y de tonos
-        # rojos simula un resplandor fosforescente en Tkinter clasico.
-        if not getattr(self, "_glow_animando", False):
-            self._glow_animando = True
-            self._glow_paso = 0
-            self.after(120, self._animar_glow_menu)
 
         self.update_idletasks()
-
-    def _animar_glow_menu(self):
-        boton = getattr(self, "_boton_menu_activo", None)
-        if boton is None or not boton.winfo_exists():
-            self._glow_animando = False
-            return
-
-        tonos = ("#ff0000", "#ff1a1a", "#ff3b3b", "#ff6666", "#ff3b3b", "#ff1a1a")
-        grosores = (6, 7, 8, 9, 8, 7)
-        i = getattr(self, "_glow_paso", 0) % len(tonos)
-
-        try:
-            boton.configure(
-                highlightthickness=grosores[i],
-                highlightbackground=tonos[i],
-                highlightcolor=tonos[i],
-            )
-        except tk.TclError:
-            self._glow_animando = False
-            return
-
-        self._glow_paso = i + 1
-        self.after(140, self._animar_glow_menu)
 
     def _set_menu_buttons_loading(self, loading):
         """Bloquea los tres botones de menú mientras se está cargando un INI."""
