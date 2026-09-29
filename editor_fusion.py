@@ -435,10 +435,14 @@ class FusionEditor(tk.Tk):
             if boton is None:
                 continue
             activo = os.path.abspath(path) == os.path.abspath(ruta)
+            # Tkinter clasico no dispone de sombras/glow CSS. Se simula el
+            # resplandor con un halo rojo ancho y un borde elevado adicional.
             boton.configure(
-                highlightthickness=4 if activo else 1,
-                highlightbackground="#ff2b2b" if activo else "#555555",
-                highlightcolor="#ff2b2b" if activo else "#555555",
+                highlightthickness=7 if activo else 1,
+                highlightbackground="#ff0000" if activo else "#555555",
+                highlightcolor="#ff0000" if activo else "#555555",
+                bd=3 if activo else 0,
+                relief="raised" if activo else "flat",
             )
 
         self.update_idletasks()
