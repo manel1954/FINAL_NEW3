@@ -23,7 +23,7 @@ sed -i "2c $fecha_formateada" /home/pi/version-fecha-actualizacion
 
                         cp editor_fusion.py /home/pi/MMDVMHost
                         cp editor_dmrgateway.py /home/pi/MMDVMHost
-
+                        sudo chmod 777 -R /home/pi/MMDVMHost
 
                         
                  
