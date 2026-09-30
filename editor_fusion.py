@@ -396,7 +396,7 @@ class FusionEditor(tk.Tk):
 
         self.panel_button = tk.Button(
             image_update_row,
-            text="ABRIR PANEL",
+            text="ABRIR DV4MINI",
             command=self.toggle_panel,
             relief="flat",
             bd=0,
@@ -667,33 +667,34 @@ class FusionEditor(tk.Tk):
             )
 
     def toggle_panel(self):
-        """Abre o cierra el panel qt_menu_superior."""
-        panel = "/home/pi/A108/qt/qt_menu_superior"
+        """Abre o cierra el editor DV4Mini."""
+        dv4mini = "/home/pi/A108/qt/qt_ditor_dv4mini"
 
         # Si el proceso que abrimos ya termino, limpiamos su estado.
         if self.panel_process is not None and self.panel_process.poll() is not None:
             self.panel_process = None
+            self.panel_button.config(text="ABRIR DV4MINI")
 
         if self.panel_process is None:
-            if not os.path.isfile(panel):
+            if not os.path.isfile(dv4mini):
                 messagebox.showerror(
-                    "ABRIR PANEL",
-                    f"No se encuentra el ejecutable:\n\n{panel}",
+                    "ABRIR DV4MINI",
+                    f"No se encuentra el ejecutable:\n\n{dv4mini}",
                 )
                 return
             try:
                 self.panel_process = subprocess.Popen(
-                    [panel],
-                    cwd=os.path.dirname(panel),
+                    [dv4mini],
+                    cwd=os.path.dirname(dv4mini),
                     start_new_session=True,
                 )
-                self.panel_button.config(text="CERRAR PANEL")
-                self.status_var.set("Panel abierto")
+                self.panel_button.config(text="CERRAR DV4MINI")
+                self.status_var.set("DV4Mini abierto")
             except Exception as e:
                 self.panel_process = None
                 messagebox.showerror(
-                    "ABRIR PANEL",
-                    f"No se pudo abrir el panel:\n\n{e}",
+                    "ABRIR DV4MINI",
+                    f"No se pudo abrir DV4Mini:\n\n{e}",
                 )
         else:
             try:
@@ -704,12 +705,12 @@ class FusionEditor(tk.Tk):
                     self.panel_process.kill()
                     self.panel_process.wait(timeout=2)
                 self.panel_process = None
-                self.panel_button.config(text="ABRIR PANEL")
-                self.status_var.set("Panel cerrado")
+                self.panel_button.config(text="ABRIR DV4MINI")
+                self.status_var.set("DV4Mini cerrado")
             except Exception as e:
                 messagebox.showerror(
-                    "CERRAR PANEL",
-                    f"No se pudo cerrar el panel:\n\n{e}",
+                    "CERRAR DV4MINI",
+                    f"No se pudo cerrar DV4Mini:\n\n{e}",
                 )
 
     def cambiar_a_dmrgateway(self):
