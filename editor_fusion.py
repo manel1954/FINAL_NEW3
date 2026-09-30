@@ -685,8 +685,18 @@ class FusionEditor(tk.Tk):
                 return
             try:
                 # Antes de abrir DV4Mini, cerramos el logo ADER si esta ejecutandose.
+                # Cerramos el logo ADER por el nombre real del proceso.
+                # Si se lanzo como ./qt_logo_ader, pkill -f con la ruta completa
+                # puede no encontrarlo; por eso usamos primero el nombre exacto.
                 subprocess.run(
-                    ["pkill", "-f", logo_ader],
+                    ["pkill", "-x", "qt_logo_ader"],
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
+                    check=False,
+                )
+                # Fallback por si el proceso aparece con argumentos/comando distinto.
+                subprocess.run(
+                    ["pkill", "-f", "qt_logo_ader"],
                     stdout=subprocess.DEVNULL,
                     stderr=subprocess.DEVNULL,
                     check=False,
