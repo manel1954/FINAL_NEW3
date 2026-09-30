@@ -668,7 +668,7 @@ class FusionEditor(tk.Tk):
 
     def toggle_panel(self):
         """Abre o cierra el editor DV4Mini."""
-        dv4mini = "/home/pi/A108/qt/qt_editor_dv4mini"
+        dv4mini = "/home/pi/A108/qt/qt_ditor_dv4mini"
         logo_ader = "/home/pi/A108/qt/qt_logo_ader"
 
         # Si el proceso que abrimos ya termino, limpiamos su estado.
